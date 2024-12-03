@@ -22,7 +22,7 @@ pipeline {
 
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/pvkraja227/Multi-Tier-BankApp-CI.git'        
+                git branch: 'main', url: 'https://github.com/Krishna227227/Multi-Tier-BankApp-CI.git'        
             }
         }
         
@@ -101,7 +101,7 @@ pipeline {
                 withCredentials([gitUsernamePassword(credentialsId: 'git-cred', gitToolName: 'Default')]) {
                     sh '''
                         # clone the repo
-                        git clone https://github.com/pvkraja227/Multi-Tier-BankApp-CD.git
+                        git clone https://github.com/Krishna227227/Multi-Tier-BankApp-CD.git
                         cd Multi-Tier-BankApp-CD
 
                         # List files to confirm the presence of bankapp-ds.yml
@@ -111,7 +111,7 @@ pipeline {
                         repo_dir=$(pwd)
 
                         # use the absolute path for sed
-                        sed -i 's|image: rajapvk23/Banking-App:.*|image: rajapvk23/Banking-App:'${DOCKER_TAG}'|' ${repo_dir}/bankapp/bankapp-ds.yml
+                        sed -i 's|image: rajapvk23/banking-app:.*|image: rajapvk23/banking-app:'${DOCKER_TAG}'|' ${repo_dir}/bankapp/bankapp-ds.yml
                     '''
 
                     // confirm the change
@@ -123,8 +123,8 @@ pipeline {
                     // configure git for committing changes and pushing
                     sh '''
                         cd Multi-Tier-BankApp-CD # ensure you are inside the cloned repo
-                        git config user.email "venkat.klce227@gmail.com"
-                        git config user.name "pvkraja227"
+                        git config user.email "pandikrishna092@gmail.com"
+                        git config user.name "Krishna227227"
                     '''
 
                     // commit and push the updated yaml file back to the other repository
